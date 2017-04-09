@@ -24,17 +24,17 @@ class Server(object):
     When a client connects, they are greeted with a welcome message. And then they can
     move through the connected rooms. For example, on connection:
     
-    Welcome to Realms of Venture! This room has brown wall paper!  (S)
-    move north                                                     (C)
-    This room has white wallpaper.                                 (S)
-    say Hello? Is anyone here?                                     (C)
-    You say, "Hello? Is anyone here?"                              (S)
-    move south                                                     (C)
-    This room has brown wall paper!                                (S)
-    move west                                                      (C)
-    This room has a green floor!                                   (S)
-    quit                                                           (C)
-    Goodbye!                                                       (S)
+    OK! Welcome to Realms of Venture! This room has brown wall paper!  (S)
+    move north                                                         (C)
+    OK! This room has white wallpaper.                                 (S)
+    say Hello? Is anyone here?                                         (C)
+    OK! You say, "Hello? Is anyone here?"                              (S)
+    move south                                                         (C)
+    OK! This room has brown wall paper!                                (S)
+    move west                                                          (C)
+    OK! This room has a green floor!                                   (S)
+    quit                                                               (C)
+    OK! Goodbye!                                                       (S)
     
     Note that we've annotated server and client messages with *(S)* and *(C)*, but
     these won't actually appear in server/client communication. Also, you'll be
@@ -189,6 +189,8 @@ class Server(object):
     def push_output(self):
         """
         Sends the contents of the output buffer to the client.
+        
+        This method should prepend "OK! " to the output before sending it.
         
         :return: None 
         """
