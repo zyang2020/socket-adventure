@@ -1,3 +1,13 @@
+"""
+serve.py
+
+Instantiates a socket-adventure `Server` and serves it on a specified
+port.
+
+You should not need to make any changes in this file.
+"""
+
+
 import sys
 
 from server import Server
@@ -10,3 +20,4 @@ except IndexError:
 
 server = Server(port)
 server.serve()
+
