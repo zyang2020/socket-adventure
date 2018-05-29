@@ -98,8 +98,8 @@ class Server(object):
 
     def get_input(self):
         """
-        Retrieve input from the client_connection. Store at most 32 characters of
-        this input into the input_buffer.
+        Retrieve input from the client_connection. All messages from the client
+        should end in a newline character: '\n'.
         
         This is a BLOCKING call. It should not return until there is some input from
         the client to receive.
