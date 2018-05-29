@@ -11,11 +11,13 @@ client_socket = socket.socket()
 client_socket.connect(("127.0.0.1", port))
 
 while True:
-    response = client_socket.recv(4096).decode()
-    print(response)
-
-    if response == "":
+    try:
+        response = client_socket.recv(4096).decode()
+    except ConnectionAbortedError:
+        print("Connection closed by host.")
         break
 
-    my_message = input("> ").encode('utf-8')
+    print(response)
+
+    my_message = input("> ").encode('utf-8') + b'\n'
     client_socket.sendall(my_message)
