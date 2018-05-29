@@ -190,7 +190,8 @@ class Server(object):
         """
         Sends the contents of the output buffer to the client.
         
-        This method should prepend "OK! " to the output before sending it.
+        This method should prepend "OK! " to the output and append "\n" before
+        sending it.
         
         :return: None 
         """
