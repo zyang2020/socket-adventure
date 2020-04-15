@@ -7,8 +7,13 @@ except IndexError:
     print("Please include a port number, eg: python serve.py 50000")
     exit(-1)
 
+try:
+    host = sys.argv[2]
+except IndexError:
+    host = "127.0.0.1"
+
 client_socket = socket.socket()
-client_socket.connect(("127.0.0.1", port))
+client_socket.connect((host, port))
 
 while True:
     try:
