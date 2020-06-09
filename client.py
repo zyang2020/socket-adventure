@@ -4,7 +4,7 @@ import sys
 try:
     port = int(sys.argv[1])
 except IndexError:
-    print("Please include a port number, eg: python serve.py 50000")
+    print("Please include a port number, eg: python client.py 50000")
     exit(-1)
 
 try:
@@ -26,3 +26,9 @@ while True:
 
     my_message = input("> ").encode('utf-8') + b'\n'
     client_socket.sendall(my_message)
+    if my_message.decode() == 'quit\n':
+        response = client_socket.recv(4096).decode()
+        print(response)
+        break
+print('Closing client side socket!')
+client_socket.close()
